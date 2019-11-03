@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game</title>
+
+	<style>
+		*{margin: 0;padding: 0;}
+		body{
+			user-select: none;
+		}
+		
+		.control{
+			width:200px;
+			height:200px;
+			border-radius: 50%;
+			box-shadow: 4px 4px 4px #999 inset, -4px -4px 4px #999 inset, 4px -4px 4px #999 inset, -4px 4px 4px #999 inset,4px 4px 4px #666,-4px 4px 4px #666,4px -4px 4px #666,-4px -4px 4px #666;
+			background: #fff;
+			position: absolute;
+            top:20%;
+            left: 50%;
+            transform: translateY(-100px);
+			transform: translateX(-100px);
+		}
+		
+		.dice1{
+            width: 100px;
+            height: 100px;
+            background-image: url(img/1.jpg);
+            cursor: pointer;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        #page1 {
+        	font-size: 20px;
+        	position: absolute;
+        	left: 50%;
+        	top: 20%;
+        	transform: translateX(-50%);
+        }
+        
+        .userInp {
+        	border: 3px solid skyblue;
+        	height: 50px;
+        	width: 100px;
+        	font-size: 18px;
+        	border-radius: 20px;
+        	background: #3CB371;
+        	box-shadow: 2px 2px 4px #ccc;
+        	/* padding-left: 45px; */
+        }
+       	#currentNum {
+       		font-size: 20px;
+       		margin-top: 10px;
+       	}
+       	.info {
+       		padding-top: 230px;
+       		padding-left: 50px;
+       	}
+	</style>
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="bs/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="bs/css/bootstrap.min.css">
+</head>
+<body>
+	
+	<div class="container">
+
+
+		<div id="c1" class="control">
+			<div class="dice1"></div>
+			<div class="info">
+				<input class="userInp" id="userInp" type="text" placeholder="请输入点数">
+				<div id="currentNum"></div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	
+	<script>
+		var dice1 = $(".dice1");
+		var c1 = $("#c1");
+		let userInp = document.getElementById('userInp');
+		// userInp.addEventListener('focus', () => {
+		// 	userInp.style.paddingLeft = '45px';
+
+		// })
+		userInp.addEventListener('blur', () => {
+			userInp.style.paddingLeft = '43px';
+
+		})
+
+		dice1.on("click", function(){
+			let num = Math.ceil(Math.random()*6);
+			let bgi = Math.ceil(Math.random()*2);
+			dice1.css("background-image", "url(img/s"+bgi+".jpg");
+			setTimeout(function() {
+				dice1.css("background-image", "url(img/s"+bgi+".jpg");
+			},50)
+			setTimeout(function() {
+				dice1.css("background-image", "url(img/s2.jpg");
+			},100)
+			setTimeout(function() {
+				dice1.css("background-image", "url(img/s"+bgi+".jpg");
+			},150)
+			setTimeout(function() {
+				dice1.css("background-image", "url(img/s1.jpg");
+			},200)
+			setTimeout(function() {
+				dice1.css("background-image", "url(img/s"+bgi+".jpg");
+			},350)
+			setTimeout(function(){
+				dice1.css("background-image", "url(img/"+num+".jpg");
+			}, 400);
+			// dice1.css("pointer-events","none");
+			// dice2.css("pointer-events","auto");
+
+			function showNum (num) {
+				setTimeout(function(){
+					document.getElementById('currentNum').innerHTML = '当前点数为'+num;
+				},1000)
+			}
+			if(num == 1){
+				showNum(num)
+				
+			}
+			if(num == 2){
+				showNum(num)
+			}
+			if(num == 3){
+				showNum(num)
+			}
+			if(num == 4){
+				showNum(num)
+			}
+			if(num == 5){
+				showNum(num)
+			}
+			if(num == 6){
+				showNum(num)
+			}
+		})
+	</script>
+</body>
+</html>
